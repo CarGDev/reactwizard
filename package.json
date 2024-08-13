@@ -1,5 +1,5 @@
 {
-  "name": "React-Crafter",
+  "name": "react-crafter",
   "version": "1.0.1",
   "description": "A CLI tool to quickly scaffold a React application with TypeScript, Ant Design, Sass, Webpack, and essential development tools like Husky and linters pre-configured. Perfect for kickstarting modern React projects with best practices.",
   "main": "index.js",
