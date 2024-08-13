@@ -1,0 +1,37 @@
+{
+  "name": "reactwizard",
+  "version": "1.0.0",
+  "description": "CLI to create a React app with predefined setup",
+  "main": "index.js",
+  "bin": {
+    "reactwizard": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^7.2.0",
+    "execa": "^5.0.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^6.0.0",
+    "ora": "^5.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5",
+    "@babel/preset-react": "^7.13.1",
+    "@babel/preset-typescript": "^7.24.7",
+    "@types/jest": "^29.5.12",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.1.1",
+    "dotenv-webpack": "^7.0.2",
+    "jest": "^29.7.0",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "ts-node": "^10.9.2",
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0"
+  }
+}
