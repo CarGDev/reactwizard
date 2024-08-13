@@ -1,11 +1,29 @@
 {
   "name": "reactwizard",
   "version": "1.0.0",
-  "description": "CLI to create a React app with predefined setup",
+  "description": "A CLI tool to quickly scaffold a React application with TypeScript, Ant Design, Sass, Webpack, and essential development tools like Husky and linters pre-configured. Perfect for kickstarting modern React projects with best practices.",
   "main": "index.js",
   "bin": {
     "reactwizard": "./index.js"
   },
+  "keywords": [
+    "react",
+    "typescript",
+    "antd",
+    "sass",
+    "webpack",
+    "cli",
+    "husky",
+    "linter",
+    "prettier",
+    "babel",
+    "javascript",
+    "frontend",
+    "starter-kit",
+    "scaffold",
+    "npx"
+  ],
+  "author": "Carlos Gutierrez <cargdev@gmail.com>",
   "scripts": {
     "start": "node index.js",
     "test": "jest"
