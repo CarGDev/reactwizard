@@ -1,4 +1,3 @@
-
 # React Crafter
 
 **React Crafter** is a CLI tool designed to quickly scaffold a modern React application with TypeScript, Ant Design, Sass, Webpack, and essential development tools like Husky and linters pre-configured. This tool simplifies the initial setup, allowing developers to start coding with best practices from the get-go.
@@ -49,58 +48,76 @@ npx react-crafter awesome-project
 Here’s a summary of the commands you can use after setting up your project:
 
 1. **Start Development Server**:
-    ```bash
-    npm start
-    ```
-    Starts the development server with Webpack. The project is served using Webpack Dev Server with the configuration specified in `webpack.config.js`.
+
+   ```bash
+   npm start
+   ```
+
+   Starts the development server with Webpack. The project is served using Webpack Dev Server with the configuration specified in `webpack.config.js`.
 
 2. **Build for Production**:
-    ```bash
-    npm run build
-    ```
-    Builds the project for production. Webpack compiles the project and outputs the optimized bundle in the `/dist` directory.
+
+   ```bash
+   npm run build
+   ```
+
+   Builds the project for production. Webpack compiles the project and outputs the optimized bundle in the `/dist` directory.
 
 3. **Run Tests**:
-    ```bash
-    npm test
-    ```
-    Placeholder for running tests. Currently, it does not run any tests but can be customized to run Jest or other test suites.
+
+   ```bash
+   npm test
+   ```
+
+   Placeholder for running tests. Currently, it does not run any tests but can be customized to run Jest or other test suites.
 
 4. **Run Tests in Watch Mode**:
-    ```bash
-    npm run test:dev
-    ```
-    Runs tests in watch mode using React Scripts. Suitable for a test-driven development approach.
+
+   ```bash
+   npm run test:dev
+   ```
+
+   Runs tests in watch mode using React Scripts. Suitable for a test-driven development approach.
 
 5. **Format Staged Files**:
-    ```bash
-    npm run pretty-quick
-    ```
-    Formats all staged files using Prettier. Ensures that code is consistently formatted before committing.
+
+   ```bash
+   npm run pretty-quick
+   ```
+
+   Formats all staged files using Prettier. Ensures that code is consistently formatted before committing.
 
 6. **Lint Entire Codebase**:
-    ```bash
-    npm run lint:prettier
-    ```
-    Checks the format of the entire codebase using a custom script. It can be used to ensure that all files adhere to Prettier’s formatting rules.
+
+   ```bash
+   npm run lint:prettier
+   ```
+
+   Checks the format of the entire codebase using a custom script. It can be used to ensure that all files adhere to Prettier’s formatting rules.
 
 7. **Format Entire Codebase**:
-    ```bash
-    npm run prettier
-    ```
-    Formats the entire codebase using Prettier based on the configuration in `.prettierrc`.
+
+   ```bash
+   npm run prettier
+   ```
+
+   Formats the entire codebase using Prettier based on the configuration in `.prettierrc`.
 
 8. **Format & Commit**:
-    ```bash
-    npm run prettier:commit
-    ```
-    Applies Prettier formatting to staged files before committing. Ensures that committed code is properly formatted.
+
+   ```bash
+   npm run prettier:commit
+   ```
+
+   Applies Prettier formatting to staged files before committing. Ensures that committed code is properly formatted.
 
 9. **Eject Project**:
-    ```bash
-    npm run eject
-    ```
-    Ejects the project from Create React App. This command exposes the underlying configuration files for full control but cannot be undone.
+
+   ```bash
+   npm run eject
+   ```
+
+   Ejects the project from Create React App. This command exposes the underlying configuration files for full control but cannot be undone.
 
 10. **Prepare Husky**:
     ```bash
@@ -132,12 +149,14 @@ This feature ensures you can start working in your preferred environment immedia
 We welcome contributions to React Crafter! If you have ideas, find bugs, or want to improve the project, please feel free to contribute. Here's how you can get involved:
 
 ### 1. Fork the Repository
+
 Start by forking the repository to your own GitHub account:
 
 1. Navigate to the [React Crafter GitHub repository](#).
 2. Click the "Fork" button in the top right corner.
 
 ### 2. Clone Your Fork
+
 Clone your forked repository to your local machine:
 
 ```bash
@@ -146,6 +165,7 @@ cd react-crafter
 ```
 
 ### 3. Create a New Branch
+
 Create a new branch for your feature or bug fix:
 
 ```bash
@@ -153,9 +173,11 @@ git checkout -b feature/your-feature-name
 ```
 
 ### 4. Make Changes
+
 Make your changes or improvements in your new branch. Follow the existing code style and conventions.
 
 ### 5. Test Your Changes
+
 Before submitting your changes, make sure everything works as expected:
 
 ```bash
@@ -163,6 +185,7 @@ npm run test
 ```
 
 ### 6. Commit and Push
+
 Commit your changes with a descriptive commit message:
 
 ```bash
@@ -172,15 +195,19 @@ git push origin feature/your-feature-name
 ```
 
 ### 7. Create a Pull Request
+
 Go to the original repository and click on the "Pull Requests" tab. Click "New Pull Request" and select your branch. Provide a description of your changes and submit the pull request.
 
 ### 8. Review Process
+
 Your pull request will be reviewed by the maintainers. You may be asked to make additional changes or clarifications before your code is merged.
 
 ### 9. Celebrate 🎉
+
 Once your pull request is merged, you’ve officially contributed to React Crafter! Thank you for your contribution.
 
 ### Code of Conduct
+
 Please note that we have a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [cargdev@gmail.com](mailto:cargdev@gmail.com).
 
 ## License
