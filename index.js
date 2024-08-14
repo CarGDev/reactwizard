@@ -16,14 +16,18 @@ const program = new commander.Command(packageJson.name)
   .version(packageJson.version)
   .arguments('<project-directory>')
   .usage(`${chalk.green('<project-directory>')}`)
-  .action((projectDirectory) => {
-    createApp(projectDirectory);
+  .option('-v, --verbose', 'Run with verbose logging') // <-- Add this line
+  .action((projectDirectory, options) => {
+    // <-- Update the action to take options
+    createApp(projectDirectory, options);
   })
   .parse(process.argv);
 
-function createApp(projectDirectory) {
+function createApp(projectDirectory, options) {
   console.clear(); // Clears the console before anything else
   const root = path.resolve(projectDirectory);
+  const verboseFlag = options.verbose ? '--verbose' : '';
+  const stdioOption = verboseFlag === '--verbose' ? 'inherit' : 'ignore';
 
   // Check if the directory already exists
   if (fs.existsSync(root)) {
@@ -51,24 +55,26 @@ function createApp(projectDirectory) {
     '⏳ Installing packages. This might take a couple of minutes.'
   ).start();
 
-  execSync('npx create-react-app . --template typescript', { stdio: 'ignore' });
+  execSync(`npx create-react-app . --template typescript ${verboseFlag}`, {
+    stdio: stdioOption,
+  });
 
   spinner.succeed('📦 Packages installed successfully.');
 
-  installDependencies();
-  installDevDependencies();
+  installDependencies(verboseFlag, stdioOption);
+  installDevDependencies(verboseFlag, stdioOption);
   setupAntd();
   setupSass();
-  setupTesting();
-  setupHusky();
-  setupCommitlint();
+  setupTesting(stdioOption);
+  setupHusky(stdioOption);
+  setupCommitlint(stdioOption);
   setupRedux();
   createAtomicStructure();
   updatePackageJson();
   copyPreConfiguredFiles(root); // Copy pre-configured files like prettier-commit.js
   deletePreCommitHook(); // Delete the .husky/pre-commit hook
-  runGitCommands(); // Run git add . and git commit -m "feat: happy coding"
-  runPrettierCommit(); // Run npm run prettier:commit
+  runGitCommands(stdioOption); // Run git add . and git commit -m "feat: happy coding"
+  runPrettierCommit(stdioOption); // Run npm run prettier:commit
   printCommandSummary(); // Print the command summary
   console.log(chalk.green('🎉 All done! Happy coding.'));
   // Ask the user where they want to open the project
@@ -129,7 +135,7 @@ function openInTerminal(directory) {
   }
 }
 
-function openInVSCode(directory) {
+function openInVSCode(directory, stdioOption) {
   spawn('code', [directory], { stdio: 'inherit' });
 }
 
@@ -218,11 +224,11 @@ function printCommandSummary() {
   );
 }
 
-function runPrettierCommit() {
+function runPrettierCommit(stdioOption) {
   const spinner = ora('🎨 Running prettier:commit script...').start();
 
   try {
-    execSync('npm run prettier:commit', { stdio: 'ignore' });
+    execSync('npm run prettier:commit', { stdio: stdioOption });
     spinner.succeed('✅ Prettier commit script executed successfully.');
   } catch (error) {
     spinner.fail('❌ Failed to run prettier:commit script.');
@@ -230,12 +236,12 @@ function runPrettierCommit() {
   }
 }
 
-function runGitCommands() {
+function runGitCommands(stdioOption) {
   const spinner = ora('🔧 Running Git commands...').start();
 
   try {
-    execSync('git add .', { stdio: 'ignore' });
-    execSync('git commit -m "feat: happy coding"', { stdio: 'ignore' });
+    execSync('git add .', { stdio: stdioOption });
+    execSync('git commit -m "feat: happy coding"', { stdio: stdioOption });
     spinner.succeed('✅ Git commands executed successfully.');
   } catch (error) {
     spinner.fail('❌ Failed to execute Git commands.');
@@ -331,20 +337,20 @@ function copyPreConfiguredFiles(destinationPath) {
   spinner.succeed('📁 Pre-configured files copied.');
 }
 
-function installDependencies() {
+function installDependencies(verboseFlag, stdioOption) {
   const spinner = ora('🔄 Installing additional dependencies...').start();
   execSync(
-    'npm install @babel/core @babel/preset-env @babel/preset-react @reduxjs/toolkit @testing-library/jest-dom @testing-library/react @testing-library/user-event @types/jest @types/node @types/react @types/react-dom ajv antd babel-loader css-loader jest playwright react react-dom react-redux react-scripts redux sass sass-loader style-loader typescript web-vitals webpack webpack-cli',
-    { stdio: 'ignore' }
+    `npm install @babel/core @babel/preset-env @babel/preset-react @reduxjs/toolkit @testing-library/jest-dom @testing-library/react @testing-library/user-event @types/jest @types/node @types/react @types/react-dom ajv antd babel-loader css-loader jest playwright react react-dom react-redux react-scripts redux sass sass-loader style-loader typescript web-vitals webpack webpack-cli ${verboseFlag}`,
+    { stdio: stdioOption }
   );
   spinner.succeed('✅ Additional dependencies installed.');
 }
 
-function installDevDependencies() {
+function installDevDependencies(verboseFlag, stdioOption) {
   const spinner = ora('🔄 Installing additional dev dependencies...').start();
   execSync(
-    'npm install --save-dev @babel/plugin-proposal-private-property-in-object ora prettier @commitlint/cli @commitlint/config-conventional @svgr/webpack dotenv dotenv-webpack husky url-loader webpack-dev-server pretty-quick',
-    { stdio: 'ignore' }
+    `npm install --save-dev @babel/plugin-proposal-private-property-in-object ora prettier @commitlint/cli @commitlint/config-conventional @svgr/webpack dotenv dotenv-webpack husky url-loader webpack-dev-server pretty-quick ${verboseFlag}`,
+    { stdio: stdioOption }
   );
   spinner.succeed('✅ Additional dev dependencies installed.');
 }
@@ -364,20 +370,29 @@ function setupSass() {
   spinner.succeed('🎨 SASS set up.');
 }
 
-function setupTesting() {
+function setupTesting(stdioOption) {
   const spinner = ora('🧪 Setting up Playwright and Jest...').start();
-  execSync('npx playwright install', { stdio: 'ignore' });
-  spinner.succeed('🧪 Playwright and Jest set up.');
+  try {
+    execSync('npx playwright install', { stdio: stdioOption });
+    spinner.succeed('🧪 Playwright and Jest set up.');
+  } catch (error) {
+    spinner.fail('❌ Failed to set up Playwright and Jest.');
+    console.error(error);
+  }
 }
 
-function setupHusky() {
+function setupHusky(stdioOption) {
   const spinner = ora('🐶 Setting up Husky...').start();
-  execSync('npx husky-init && npm install', { stdio: 'ignore' });
-  execSync('npx husky add .husky/pre-commit "npm test"', { stdio: 'ignore' });
+  execSync('npx husky-init && npm install', {
+    stdio: stdioOption,
+  });
+  execSync('npx husky add .husky/pre-commit "npm test"', {
+    stdio: stdioOption,
+  });
   spinner.succeed('🐶 Husky set up.');
 }
 
-function setupCommitlint() {
+function setupCommitlint(stdioOption) {
   const spinner = ora('🔍 Setting up Commitlint...').start();
   const commitMsg = `#!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
@@ -391,12 +406,12 @@ node ./.husky/commit-msg-linter.js "$1"`;
 node .husky/lint-check.js`;
 
   execSync('npm install @commitlint/{config-conventional,cli} --save-dev', {
-    stdio: 'ignore',
+    stdio: stdioOption,
   });
-  execSync('touch .husky/commit-msg', { stdio: 'ignore' });
-  execSync('touch .husky/pre-push', { stdio: 'ignore' });
-  execSync('chmod +x .husky/commit-msg', { stdio: 'ignore' });
-  execSync('chmod +x .husky/pre-push', { stdio: 'ignore' });
+  execSync('touch .husky/commit-msg', { stdio: stdioOption });
+  execSync('touch .husky/pre-push', { stdio: stdioOption });
+  execSync('chmod +x .husky/commit-msg', { stdio: stdioOption });
+  execSync('chmod +x .husky/pre-push', { stdio: stdioOption });
 
   fs.writeFileSync(path.resolve('.husky/commit-msg'), commitMsg);
   fs.writeFileSync(path.resolve('commitlint.config.js'), commitLintMsgLinter);

@@ -2,7 +2,6 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-console.log('PUBLIC_URL:', process.env.PUBLIC_URL);
 
 module.exports = {
   mode: 'development',
