@@ -27,6 +27,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest",
+    "publish": "node release.js",
     "lint:prettier": "node check-format.js",
     "pretty-quick": "pretty-quick",
     "prettier": "prettier --write . --config .prettierrc",
