@@ -42,8 +42,8 @@ async function run() {
     execSync('git push origin master --follow-tags', { stdio: 'inherit' });
 
     // Publish the package
-    //console.log(chalk.blue('Publishing the package to npm...'));
-    //execSync('npm publish', { stdio: 'inherit' });
+    console.log(chalk.blue('Publishing the package to npm...'));
+    execSync('npm publish', { stdio: 'inherit' });
 
     console.log(
       chalk.green(`🚀 Successfully released a new ${versionType} version!`)
