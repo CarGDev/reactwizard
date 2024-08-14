@@ -21,7 +21,7 @@ async function run() {
     console.log(
       chalk.blue('Pulling the latest changes from the remote repository...')
     );
-    execSync('git pull origin main', { stdio: 'inherit' });
+    execSync('git pull origin master', { stdio: 'inherit' });
 
     // Ask the user to choose the version bump type
     const { versionType } = await inquirer.prompt([
@@ -39,7 +39,7 @@ async function run() {
 
     // Commit and push changes
     console.log(chalk.blue('Pushing changes to the remote repository...'));
-    execSync('git push origin main --follow-tags', { stdio: 'inherit' });
+    execSync('git push origin master --follow-tags', { stdio: 'inherit' });
 
     // Publish the package
     //console.log(chalk.blue('Publishing the package to npm...'));
