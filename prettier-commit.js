@@ -16,9 +16,9 @@ const { execSync } = require('child_process');
     if (changes) {
       spinner.succeed('Changes detected.');
       // Read the latest commit message to ensure uniqueness
-      const latestCommitMessage = execSync('git log -1 --pretty=%B', {
-        encoding: 'utf-8',
-      }).trim();
+      const latestCommitMessage = execSync(`git log -n 100 --pretty=format:%s`)
+        .toString()
+        .split('\n');
 
       // Generate a unique commit message
       let commitMessage = 'style: format with prettier';

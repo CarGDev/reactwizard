@@ -4,10 +4,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   plugins: ['jsdoc'],
   parserOptions: {
     ecmaVersion: 12,
@@ -15,7 +12,7 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    'complexity': ['error', { 'max': 5 }],
+    complexity: ['error', { max: 5 }],
     'jsdoc/check-tag-names': 'error',
     'jsdoc/check-types': 'error',
     'jsdoc/require-jsdoc': [
