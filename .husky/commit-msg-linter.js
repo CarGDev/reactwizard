@@ -40,15 +40,44 @@ async function run() {
     // Check for duplicate commit messages in the last 100 commits
     const duplicateCommitMsg = execSync(`git log -n 100 --pretty=format:%s`)
       .toString()
-      .split('\n')
-      .some((msg) => msg.trim() === commitMsg);
+      .split('\n');
 
-    if (duplicateCommitMsg) {
-      spinner.fail('❌ Duplicate commit message detected.');
+    // Extract emojis from commitTypes
+    const emojis = Object.values(commitTypes);
+
+    // Function to remove an emoji or the default emoji from the start of the string
+    const removeEmoji = (message) => {
+      for (const emoji of emojis) {
+        // Check if the message starts with the emoji
+        if (message.startsWith(emoji)) {
+          return message.slice(emoji.length).trim();
+        }
+      }
+      // Check if the message starts with the default emoji
+      if (message.startsWith(defaultEmoji)) {
+        return message.slice(defaultEmoji.length).trim();
+      }
+      // Return the message as is if it doesn't start with an emoji
+      return message;
+    };
+
+    // Apply the function to each message
+    const cleanMessages = duplicateCommitMsg.map(removeEmoji);
+
+    if (cleanMessages.includes(commitMsg)) {
+      spinner.fail(chalk.bold.red('Duplicate Commit Detected'));
+
+      console.log();
       console.error(
-        chalk.red(
-          '❌ Duplicate commit message detected. Please use a unique commit message.'
-        )
+        chalk.white.bgRed.bold(' ERROR: ') +
+          chalk.redBright(' A duplicate commit message has been detected.')
+      );
+      console.log();
+      console.log(
+        chalk.yellowBright('💡 TIP: ') +
+          chalk.white(
+            ' Please use a unique commit message to keep the history clean.'
+          )
       );
       console.log();
       process.exit(1);
