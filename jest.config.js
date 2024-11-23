@@ -1,7 +1,8 @@
 module.exports = {
-  testEnvironment: 'node', // Set up the environment (node, jsdom, etc.)
-  verbose: true, // Show detailed test results
-  coverageDirectory: 'coverage', // Directory for code coverage reports
-  collectCoverage: true, // Collect coverage information
-  coverageReporters: ['text', 'lcov'], // Reporters for coverage
+  preset: 'ts-jest',
+  roots: ['<rootDir>/src', '<rootDir>/bin'],
+  testEnvironment: 'node',
+  roots: ['<rootDir>/'],
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.[tj]sx?$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 };
