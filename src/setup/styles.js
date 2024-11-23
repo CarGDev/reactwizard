@@ -3,7 +3,8 @@ const path = require('path');
 const ora = require('ora');
 const { execSync } = require('child_process');
 
-function setupStyles(styleChoice) {
+function setupStyles(userInput) {
+  const { styleChoice, language } = userInput;
   const spinner = ora('🎨 Setting up styles...').start();
 
   try {
@@ -27,7 +28,8 @@ function setupStyles(styleChoice) {
     fs.writeFileSync(stylePath, `/* Placeholder for ${styleChoice} styles */`);
 
     // Update index.js or index.tsx to include the style
-    const indexPath = path.resolve('src', 'index.tsx');
+
+    const indexPath = path.resolve('src', language === 'TypeScript' ? 'index.tsx' : 'index.js');
     let indexContent = fs.readFileSync(indexPath, 'utf8');
 
     // Remove any existing style imports and add the new one

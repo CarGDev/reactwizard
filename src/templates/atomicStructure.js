@@ -1,3 +1,6 @@
+const fs = require('fs');
+const ora = require('ora');
+
 function createAtomicStructure() {
   const spinner = ora('🏗️ Creating atomic design structure…').start();
   const atomicStructure = [

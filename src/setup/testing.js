@@ -3,7 +3,8 @@ const path = require('path');
 const ora = require('ora');
 const { execSync } = require('child_process');
 
-function setupTesting(testingFramework) {
+function setupTesting(userInput) {
+  const { testingFramework } = userInput;
   const spinner = ora('🧪 Setting up testing framework...').start();
 
   try {

@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 
 function setupRedux(options) {
-  console.log('options...', options);
   const spinner = ora('🛠️ Setting up Redux...').start();
 
   const reduxStructure = [
@@ -36,7 +35,7 @@ export default store;
   fs.writeFileSync(path.resolve(`src/store/index${extension}`), storeIndex);
 
   const appTsxJsPath = path.resolve(`src/${appFileName}`);
-  let appTsxJs = fs.readFileSync(appTsxPath, 'utf8');
+  let appTsxJs = fs.readFileSync(appTsxJsPath, 'utf8');
   appTsxJs = `
 import React from 'react';
 import { Provider } from 'react-redux';
@@ -45,7 +44,7 @@ import store from './store';
 const App${reactFileType} = () => {
   return (
     <Provider store={store}>
-      ${appTsx}
+      ${appTsxJs}
     </Provider>
   );
 };

@@ -1,4 +1,7 @@
-// Placeholder for packageJson.js
+const fs = require('fs');
+const ora = require('ora');
+const path = require('path');
+
 function updatePackageJson() {
   const spinner = ora(
     '📝 Updating package.json with custom scripts...'

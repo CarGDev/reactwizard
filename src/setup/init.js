@@ -12,7 +12,9 @@ const { setupTesting } = require('./testing');
 const { createAtomicStructure } = require('../templates/atomicStructure');
 const { updatePackageJson } = require('../templates/packageJson');
 const { askUserWhereToOpen } = require('../utils/logging');
+const { printCommandSummary } = require('./printCommandSummary');
 const inquirer = require('inquirer');
+
 
 async function initProject(projectDirectory, userInput, options) {
   const root = path.resolve(projectDirectory);
@@ -38,7 +40,7 @@ async function initProject(projectDirectory, userInput, options) {
   }
 
   // Set up Git
-  setupGit(options);
+  //setupGit(options);
   // Install additional dependencies
   installDependencies(userInput, options);
   // Install additional dev dependencies
@@ -46,9 +48,9 @@ async function initProject(projectDirectory, userInput, options) {
 
   // Set up additional features based on user input
   if (userInput.useHusky) setupHusky(options);
-  if (userInput.useRedux) setupRedux(options);
-  setupStyles(userInput.styling);
-  setupTesting(userInput.testingFramework);
+  if (userInput.useRedux) setupRedux(userInput);
+  setupStyles(userInput, options);
+  setupTesting(userInput);
 
   // Create atomic design structure
   createAtomicStructure();
@@ -56,6 +58,7 @@ async function initProject(projectDirectory, userInput, options) {
   // Update package.json
   updatePackageJson(userInput);
 
+  printCommandSummary();
   console.log('🎉 Project setup complete!');
 
   // Ask user where to open the project

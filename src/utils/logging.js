@@ -1,5 +1,8 @@
 const chalk = require('chalk');
 const inquirer = require('inquirer');
+const { openInTerminal } = require('./loginUtils/openInTerminal');
+const { openInVSCode } = require('./loginUtils/openInVSCode');
+const { openInNeovim } = require('./loginUtils/openInNeovim');
 
 function askUserWhereToOpen(directory) {
   inquirer
