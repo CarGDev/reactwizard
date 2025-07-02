@@ -13,6 +13,7 @@
 - **Atomic Design Structure**: Creates an atomic design folder structure to organize your components.
 - **Redux Setup**: Sets up Redux with slices, middleware, and selectors for state management.
 - **Test Suite**: Installs Jest and Playwright for comprehensive testing.
+- **Automatic Git Initialization**: Initializes a Git repository for your project during setup.
 
 ## Installation
 
@@ -37,6 +38,8 @@ npx react-crafter my-new-app
 ```
 
 Replace `my-new-app` with the name of your project.
+
+The setup process automatically runs `git init` so your project starts with version control enabled.
 
 ### Example:
 

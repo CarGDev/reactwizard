@@ -48,7 +48,7 @@ async function initProject(projectDirectory, userInput, options) {
   }
 
   // Set up Git
-  //setupGit(options);
+  setupGit(options);
   // Install additional dependencies
   installDependencies(userInput, options);
   // Install additional dev dependencies
