@@ -1,11 +1,11 @@
 # React Crafter
 
-**React Crafter** is a CLI tool designed to quickly scaffold a modern React application with TypeScript, Ant Design, Sass, Vite, and essential development tools like Husky and linters pre-configured. This tool simplifies the initial setup, allowing developers to start coding with best practices from the get-go.
+**React Crafter** is a CLI tool designed to quickly scaffold a modern React application with TypeScript, optional UI libraries, Sass, Vite, and essential development tools like Husky and linters pre-configured. This tool simplifies the initial setup, allowing developers to start coding with best practices from the get-go.
 
 ## Features
 
 - **React with TypeScript**: Automatically sets up a React project using TypeScript.
-- **Ant Design Integration**: Includes Ant Design (antd) for UI components, fully integrated with your project.
+- **UI Library Options**: Choose between Ant Design, Material UI, Chakra UI, Radix UI, or none at all during setup.
 - **Sass Support**: Configures Sass for better styling with variables, mixins, and more.
 - **Vite Configuration**: Fast bundler setup for development and production builds.
 - **Husky & Linters**: Pre-configured Git hooks with Husky, Commitlint, and Prettier to enforce code quality and style.

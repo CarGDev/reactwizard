@@ -1,7 +1,7 @@
 {
   "name": "react-crafter",
   "version": "1.1.3",
-  "description": "A CLI tool to quickly scaffold a React application with TypeScript, Ant Design, Sass, Vite, and essential development tools like Husky and linters pre-configured. Perfect for kickstarting modern React projects with best practices.",
+  "description": "A CLI tool to quickly scaffold a React application with TypeScript, optional UI frameworks, Sass, Vite, and essential development tools like Husky and linters pre-configured. Perfect for kickstarting modern React projects with best practices.",
   "main": "index.js",
   "bin": {
     "react-crafter": "bin/cli.js"
@@ -10,6 +10,9 @@
     "react",
     "typescript",
     "antd",
+    "material-ui",
+    "chakra-ui",
+    "radix-ui",
     "sass",
     "vite",
     "cli",
