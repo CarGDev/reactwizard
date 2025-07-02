@@ -2,6 +2,7 @@ const devDeps = [
   'pretty-quick',
   'vite',
   '@vitejs/plugin-react',
+  '@originjs/vite-plugin-federation',
   'husky',
   'dotenv',
   '@commitlint/config-conventional',

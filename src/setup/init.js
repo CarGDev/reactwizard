@@ -10,6 +10,7 @@ const { setupZustand } = require('./zustand');
 const { setupStyles } = require('./styles');
 const { setupGit } = require('./gitInit');
 const { setupTesting } = require('./testing');
+const { setupModuleFederation } = require('./moduleFederation');
 const { createAtomicStructure } = require('../templates/atomicStructure');
 const { updatePackageJson } = require('../templates/packageJson');
 const { askUserWhereToOpen } = require('../utils/logging');
@@ -56,6 +57,9 @@ async function initProject(projectDirectory, userInput, options) {
   }
   setupStyles(userInput.styling);
   setupTesting(userInput.testingFramework);
+  if (userInput.useModuleFederation) {
+    setupModuleFederation();
+  }
 
   // Create atomic design structure
   createAtomicStructure();
