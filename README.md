@@ -49,6 +49,15 @@ npx react-crafter awesome-project
 
 During setup you'll select either JavaScript or TypeScript. React Crafter then calls `create-vite` with the matching template (`react` or `react-ts`) so you won't see any additional prompts.
 
+## CLI Flags
+
+React Crafter supports a few command line options:
+
+- `--typescript` – scaffold the project using the TypeScript template without a prompt.
+- `-V, --version` – output the CLI version.
+- `-h, --help` – display usage information.
+
+
 ## Commands
 
 Here’s a summary of the commands you can use after setting up your project:
