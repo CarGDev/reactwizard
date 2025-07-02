@@ -3,7 +3,12 @@ const inquirer = require('inquirer');
 async function askProjectDetails() {
   return inquirer.prompt([
     { type: 'confirm', name: 'useHusky', message: 'Install Husky?' },
-    { type: 'confirm', name: 'useAntd', message: 'Install Antd?' },
+    {
+      type: 'list',
+      name: 'uiFramework',
+      message: 'Choose a UI framework:',
+      choices: ['Ant Design', 'Material UI', 'Chakra UI', 'Radix UI', 'None'],
+    },
     { type: 'confirm', name: 'useRedux', message: 'Use Redux?' },
 
     { type: 'confirm', name: 'useModuleFederation', message: 'Use Module Federation Plugin?' },

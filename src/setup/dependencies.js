@@ -5,8 +5,26 @@ const { deps } = require('./deps');
 function installDependencies(userInput, options) {
   const spinner = ora('🔄 Installing dependencies...').start();
   try {
-    if (userInput.useAntd) {
-      deps.push('antd');
+    switch (userInput.uiFramework) {
+      case 'Ant Design':
+        deps.push('antd');
+        break;
+      case 'Material UI':
+        deps.push('@mui/material');
+        deps.push('@emotion/react');
+        deps.push('@emotion/styled');
+        break;
+      case 'Chakra UI':
+        deps.push('@chakra-ui/react');
+        deps.push('@emotion/react');
+        deps.push('@emotion/styled');
+        deps.push('framer-motion');
+        break;
+      case 'Radix UI':
+        deps.push('@radix-ui/react-icons');
+        break;
+      default:
+        break;
     }
     if (userInput.useRedux) {
       deps.push('@reduxjs/toolkit');

@@ -27,7 +27,7 @@ const projectStructure = {
     'styles.js',
     'testing.js',
   ],
-  './src/config': ['webpack.config.js', 'babel.config.js'],
+  './src/config': ['vite.config.js', 'babel.config.js'],
   './src/templates': [
     'atomicStructure.js',
     'packageJson.js',

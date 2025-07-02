@@ -11,15 +11,14 @@ function updatePackageJson() {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
   packageJson.scripts = {
-    start: 'webpack serve --config webpack.config.js --mode development',
-    build: 'webpack --config webpack.config.js --mode production',
+    dev: 'vite',
+    build: 'vite build',
+    preview: 'vite preview',
     test: 'echo "Error: no test specified" && exit 0',
-    'test:dev': 'react-scripts test',
     'pretty-quick': 'pretty-quick',
     'lint:prettier': 'node check-format.js',
     prettier: 'prettier --write . --config .prettierrc',
     'prettier:commit': 'node prettier-commit.js',
-    eject: 'react-scripts eject',
     prepare: 'husky install',
   };
 
