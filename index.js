@@ -147,17 +147,17 @@ function printCommandSummary() {
   console.log(chalk.yellow('\n🔑 Project Setup Summary:'));
   console.log(chalk.cyan('\nAvailable Commands:'));
 
-  console.log(chalk.green('1. 🚀 npm start'));
+  console.log(chalk.green('1. 🚀 npm run dev'));
   console.log(
     chalk.white(
-      '   Starts the development server with Webpack. The project is served using Webpack Dev Server with the configuration specified in webpack.config.js.'
+      '   Starts the development server with Vite.'
     )
   );
 
   console.log(chalk.green('\n2. 🛠️ npm run build'));
   console.log(
     chalk.white(
-      '   Builds the project for production. Webpack compiles the project and outputs the optimized bundle in the /dist directory.'
+      '   Builds the project for production using Vite.'
     )
   );
 
@@ -270,15 +270,14 @@ function updatePackageJson() {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
   packageJson.scripts = {
-    start: 'webpack serve --config webpack.config.js --mode development',
-    build: 'webpack --config webpack.config.js --mode production',
+    dev: 'vite',
+    build: 'vite build',
+    preview: 'vite preview',
     test: 'echo "Error: no test specified" && exit 0',
-    'test:dev': 'react-scripts test',
     'pretty-quick': 'pretty-quick',
     'lint:prettier': 'node check-format.js',
     prettier: 'prettier --write . --config .prettierrc',
     'prettier:commit': 'node prettier-commit.js',
-    eject: 'react-scripts eject',
     prepare: 'husky install',
   };
 
@@ -307,8 +306,8 @@ function copyPreConfiguredFiles(destinationPath) {
       dest: path.join(destinationPath, 'prettier-commit.js'),
     },
     {
-      src: path.resolve(__dirname, 'pre-files/webpack.config.js'),
-      dest: path.join(destinationPath, 'webpack.config.js'),
+      src: path.resolve(__dirname, 'pre-files/vite.config.js'),
+      dest: path.join(destinationPath, 'vite.config.js'),
     },
     {
       src: path.resolve(__dirname, 'pre-files/.babelrc'),
@@ -340,7 +339,7 @@ function copyPreConfiguredFiles(destinationPath) {
 function installDependencies(verboseFlag, stdioOption) {
   const spinner = ora('🔄 Installing additional dependencies...').start();
   execSync(
-    `npm install @babel/core @babel/preset-env @babel/preset-react @reduxjs/toolkit @testing-library/jest-dom @testing-library/react @testing-library/user-event @types/jest @types/node @types/react @types/react-dom ajv antd babel-loader css-loader jest playwright react react-dom react-redux react-scripts redux sass sass-loader style-loader typescript web-vitals webpack webpack-cli ${verboseFlag}`,
+    `npm install @reduxjs/toolkit @testing-library/jest-dom @testing-library/react @testing-library/user-event @types/jest @types/node @types/react @types/react-dom ajv antd jest playwright react react-dom react-redux redux sass typescript web-vitals ${verboseFlag}`,
     { stdio: stdioOption }
   );
   spinner.succeed('✅ Additional dependencies installed.');
@@ -349,7 +348,7 @@ function installDependencies(verboseFlag, stdioOption) {
 function installDevDependencies(verboseFlag, stdioOption) {
   const spinner = ora('🔄 Installing additional dev dependencies...').start();
   execSync(
-    `npm install --save-dev @babel/plugin-proposal-private-property-in-object ora prettier @commitlint/cli @commitlint/config-conventional @svgr/webpack dotenv dotenv-webpack husky url-loader webpack-dev-server pretty-quick ${verboseFlag}`,
+    `npm install --save-dev @babel/plugin-proposal-private-property-in-object ora prettier @commitlint/cli @commitlint/config-conventional dotenv husky pretty-quick vite @vitejs/plugin-react ${verboseFlag}`,
     { stdio: stdioOption }
   );
   spinner.succeed('✅ Additional dev dependencies installed.');
