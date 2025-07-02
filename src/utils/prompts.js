@@ -9,7 +9,12 @@ async function askProjectDetails() {
       message: 'Choose a UI framework:',
       choices: ['Ant Design', 'Material UI', 'Chakra UI', 'Radix UI', 'None'],
     },
-    { type: 'confirm', name: 'useRedux', message: 'Use Redux?' },
+    {
+      type: 'list',
+      name: 'stateLibrary',
+      message: 'Choose state management library:',
+      choices: ['Redux Toolkit', 'Zustand', 'None'],
+    },
 
     { type: 'confirm', name: 'useModuleFederation', message: 'Use Module Federation Plugin?' },
     { type: 'list', name: 'language', message: 'Choose language:', choices: ['JavaScript', 'TypeScript'] },
