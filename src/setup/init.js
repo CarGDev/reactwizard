@@ -6,6 +6,7 @@ const { installDependencies } = require('./dependencies');
 const { installDevDependencies } = require('./devDependencies');
 const { setupHusky } = require('./husky');
 const { setupRedux } = require('./redux');
+const { setupZustand } = require('./zustand');
 const { setupStyles } = require('./styles');
 const { setupGit } = require('./gitInit');
 const { setupTesting } = require('./testing');
@@ -46,7 +47,11 @@ async function initProject(projectDirectory, userInput, options) {
 
   // Set up additional features based on user input
   if (userInput.useHusky) setupHusky(options);
-  if (userInput.useRedux) setupRedux(options);
+  if (userInput.stateLibrary === 'Redux Toolkit') {
+    setupRedux(options);
+  } else if (userInput.stateLibrary === 'Zustand') {
+    setupZustand(options);
+  }
   setupStyles(userInput.styling);
   setupTesting(userInput.testingFramework);
 
