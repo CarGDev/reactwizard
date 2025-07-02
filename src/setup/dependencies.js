@@ -26,10 +26,11 @@ function installDependencies(userInput, options) {
       default:
         break;
     }
-    if (userInput.useRedux) {
+    if (userInput.stateLibrary === 'Redux Toolkit') {
       deps.push('@reduxjs/toolkit');
       deps.push('react-redux');
-      deps.push('redux');
+    } else if (userInput.stateLibrary === 'Zustand') {
+      deps.push('zustand');
     }
     execSync(
       `npm install ${deps.join(' ')} ${options.verbose ? '--verbose' : ''}`
