@@ -1,13 +1,14 @@
 # React Crafter
 
-**React Crafter** is a CLI tool designed to quickly scaffold a modern React application with TypeScript, optional UI libraries, Sass, Vite, and essential development tools like Husky and linters pre-configured. This tool simplifies the initial setup, allowing developers to start coding with best practices from the get-go.
+**React Crafter** is a CLI tool designed to quickly scaffold a modern React application with your choice of JavaScript or TypeScript, optional UI libraries, Sass, Vite, and essential development tools like Husky and linters pre-configured. This tool simplifies the initial setup, allowing developers to start coding with best practices from the get-go.
 
 ## Features
 
-- **React with TypeScript**: Automatically sets up a React project using TypeScript.
+- **React with JavaScript or TypeScript**: Choose your preferred language and the CLI sets up the project accordingly.
 - **UI Library Options**: Choose between Ant Design, Material UI, Chakra UI, Radix UI, or none at all during setup.
 - **Sass Support**: Configures Sass for better styling with variables, mixins, and more.
 - **Vite Configuration**: Fast bundler setup for development and production builds.
+- **Automatic Vite Template**: The CLI passes the correct template to `create-vite` based on your language choice, so no extra prompts appear.
 - **Husky & Linters**: Pre-configured Git hooks with Husky, Commitlint, and Prettier to enforce code quality and style.
 - **Atomic Design Structure**: Creates an atomic design folder structure to organize your components.
 - **Redux Setup**: Sets up Redux with slices, middleware, and selectors for state management.
@@ -43,6 +44,8 @@ Replace `my-new-app` with the name of your project.
 npx react-crafter awesome-project
 ```
 
+During setup you'll select either JavaScript or TypeScript. React Crafter then calls `create-vite` with the matching template (`react` or `react-ts`) so you won't see any additional prompts.
+
 ## Commands
 
 Here’s a summary of the commands you can use after setting up your project:
@@ -50,7 +53,7 @@ Here’s a summary of the commands you can use after setting up your project:
 1. **Start Development Server**:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
    Starts the development server with Vite. The project is served using the Vite dev server.
@@ -111,19 +114,11 @@ Here’s a summary of the commands you can use after setting up your project:
 
    Applies Prettier formatting to staged files before committing. Ensures that committed code is properly formatted.
 
-9. **Eject Project**:
-
+9. **Prepare Husky**:
    ```bash
-   npm run eject
+   npm run prepare
    ```
-
-   Ejects the project from Create React App. This command exposes the underlying configuration files for full control but cannot be undone.
-
-10. **Prepare Husky**:
-    ```bash
-    npm run prepare
-    ```
-    Installs Husky hooks. This script is automatically run after dependencies are installed, setting up Git hooks for the project.
+   Installs Husky hooks. This script is automatically run after dependencies are installed, setting up Git hooks for the project.
 
 ## Customization
 
