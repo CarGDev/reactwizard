@@ -46,20 +46,37 @@
   - `npm run start` → `vite`
   - `npm run build` → `vite build`
 
+### 🔧 CLI Engine & Language
+- [ ] 🔧 **TypeScript Core Logic**: Extract core CLI logic into TypeScript for better typing, editor support, and DX while keeping entrypoints in JS for simplicity and npx support.
+- [ ] 🔧 **Multi-Language Plugin Support**: Allow plugins or commands to be authored in other languages (e.g., JSON/YAML configs or .ts generators).
+- [ ] ⚡ **Fast CLI Performance**: Ensure the CLI runs fast even without a build step (no ts-node dependency unless explicitly supported).
+- [ ] 🎯 **Internal TS, External JS**: Keep CLI entrypoints in JS for simplicity + npx support, but use internal core logic in TS for maintainability.
+
 ### 🎨 Enhanced UI & Styling
 - [ ] 🎨 **Implement CSS Modules Logic**: Add support for CSS Modules, styled-components, and emotion based on user selection.
 - [ ] 🎯 **UI Framework Integration**: Create actual component templates and setup for Ant Design, Material UI, Chakra UI, and Radix UI.
 - [ ] 🎨 **Dynamic Style Generation**: Generate appropriate style files and imports based on user's styling choice.
 
+### 📦 Ecosystem Growth
+- [ ] 🎨 **Additional UI Libraries**: Add support for:
+  - ✅ Tailwind CSS
+  - ✅ ShadCN UI
+  - ✅ TanStack Router
+  - ✅ TanStack Query
+- [ ] 🔐 **Authentication Setup**: Add auth flag or plugin (e.g., setup NextAuth/Auth0 template)
+- [ ] 📚 **Starter Templates**: Create example templates under `examples/`:
+  - `crafter-blog` - Blog template
+  - `crafter-dashboard` - Dashboard template  
+  - `crafter-admin` - Admin panel template
+
 ### 🧪 Comprehensive Testing
-- [ ] 🧪 **Expand Testing Framework Support**: Add support for:
-  - ✅ Jest (unit testing)
-  - ✅ Cypress (E2E testing)
-  - ✅ Playwright (E2E testing)
-  - ✅ Vitest (unit testing)
-  - ✅ None
+- [ ] 🧪 **Testing Framework Separation**: Split testing choices into:
+  - ✅ **Unit Testing**: Jest, Vitest
+  - ✅ **E2E Testing**: Cypress, Playwright
+  - ✅ **None**: Allow skipping testing setup entirely
 - [ ] 🧪 **Test Configuration**: Generate proper Jest/Vitest config files and sample tests.
 - [ ] 🧪 **Selective Package Installation**: Only install test packages for the selected framework.
+- [ ] 🧪 **Sample Component Tests**: Add sample tests for generated components to demonstrate testing patterns.
 
 ### 🗃️ State Management
 - [ ] 🔁 **Fix Redux TypeScript Support**: Ensure Redux store and slices are properly typed when TypeScript is selected.
@@ -92,6 +109,12 @@
   ```
 - [ ] 📦 **Plugin System**: Add a plugin system for optional features like Auth, Firebase, CI setup, etc.
 
+### 🧱 Architecture + Filesystem
+- [ ] 🏗️ **Folder Structure Consistency**: Improve folder structure consistency across generated projects.
+- [ ] 🔧 **Environment Setup**: Add optional .env setup with common environment variables.
+- [ ] 📁 **Default Folders**: Add utils, hooks, and services folders by default (optionally toggle).
+- [ ] 🎯 **Project Layout Options**: Let users choose between "Feature-based" vs "Layer-based" project layout.
+
 ### 📚 Documentation & Community
 - [ ] 📜 **Dynamic README Generation**: Generate project-specific README based on selected stack.
 - [ ] 🚀 **Demo Repository**: Create a demo repo using react-crafter to showcase production-quality setup.
@@ -100,6 +123,12 @@
   - awesome-react
   - awesome-nodejs
   - Reddit /r/reactjs or Hacker News
+
+### 🚀 CLI UX Enhancements
+- [ ] ⚙️ **Global Configuration**: Support global config file (`~/.reactcrafterrc` or `crafter.config.js`) to remember default stack preferences.
+- [ ] 👀 **Dry Run Mode**: Add `--dry-run` mode for previewing what files or packages would be created.
+- [ ] 🔇 **Silent & Debug Modes**: Add `--silent` and `--debug` modes for different verbosity levels.
+- [ ] 🔍 **Git Auto-Detection**: Auto-detect if Git repo is missing, and offer to run `git init`.
 
 ### 🛠️ CLI Generator Commands
 - [ ] 🧩 **Component Generator**: Create a CLI subcommand `g` or `generate` for structured file generation:
@@ -148,6 +177,13 @@
   - Support `--dry-run` to preview file output
   - Add `g context` or `g hook` generators
   - Use template strings or external files to allow community-generated scaffolds
+
+### 🔌 Advanced Generators
+- [ ] 🪝 **Hook Generator**: `react-crafter g hook useAuth` - Generate custom React hooks
+- [ ] 🧩 **Context Generator**: `react-crafter g context ThemeContext` - Generate React contexts
+- [ ] 📄 **Page Generator**: `react-crafter g page Home` - Generate page components
+- [ ] 🛣️ **Route Generator**: `react-crafter g route /dashboard` - Generate route configurations
+- [ ] 🎨 **Customizable Templates**: Make generator templates customizable via `templates/` folder
 
 ### 🔍 Code Analysis Findings
 Based on my analysis of the codebase, here are the specific technical issues found:
