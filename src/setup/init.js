@@ -24,15 +24,15 @@ async function initProject(projectDirectory, userInput, options) {
 
   console.log(`🚀 Creating a new React app in ${root}...`);
 
-  const spinner = ora('Installing base Create React App...').start();
+  const spinner = ora('Installing base Vite React App...').start();
 
   try {
-    // Initialize CRA with or without TypeScript
-    const template = userInput.language === 'TypeScript' ? '--template typescript' : '';
-    execSync(`npx create-react-app . ${template} ${verboseFlag}`, { stdio: 'inherit' });
-    spinner.succeed('✅ Base React app created successfully.');
+    // Initialize Vite with or without TypeScript
+    const template = userInput.language === 'TypeScript' ? '--template react-ts' : '--template react';
+    execSync(`npm create vite@latest . ${template} ${verboseFlag}`, { stdio: 'inherit' });
+    spinner.succeed('✅ Base Vite app created successfully.');
   } catch (error) {
-    spinner.fail('❌ Failed to create base React app.');
+    spinner.fail('❌ Failed to create base Vite app.');
     console.error(error);
     process.exit(1);
   }

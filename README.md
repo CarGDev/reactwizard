@@ -1,13 +1,13 @@
 # React Crafter
 
-**React Crafter** is a CLI tool designed to quickly scaffold a modern React application with TypeScript, Ant Design, Sass, Webpack, and essential development tools like Husky and linters pre-configured. This tool simplifies the initial setup, allowing developers to start coding with best practices from the get-go.
+**React Crafter** is a CLI tool designed to quickly scaffold a modern React application with TypeScript, Ant Design, Sass, Vite, and essential development tools like Husky and linters pre-configured. This tool simplifies the initial setup, allowing developers to start coding with best practices from the get-go.
 
 ## Features
 
 - **React with TypeScript**: Automatically sets up a React project using TypeScript.
 - **Ant Design Integration**: Includes Ant Design (antd) for UI components, fully integrated with your project.
 - **Sass Support**: Configures Sass for better styling with variables, mixins, and more.
-- **Webpack Configuration**: Custom Webpack setup for development and production builds.
+- **Vite Configuration**: Fast bundler setup for development and production builds.
 - **Husky & Linters**: Pre-configured Git hooks with Husky, Commitlint, and Prettier to enforce code quality and style.
 - **Atomic Design Structure**: Creates an atomic design folder structure to organize your components.
 - **Redux Setup**: Sets up Redux with slices, middleware, and selectors for state management.
@@ -53,7 +53,7 @@ Here’s a summary of the commands you can use after setting up your project:
    npm start
    ```
 
-   Starts the development server with Webpack. The project is served using Webpack Dev Server with the configuration specified in `webpack.config.js`.
+   Starts the development server with Vite. The project is served using the Vite dev server.
 
 2. **Build for Production**:
 
@@ -61,7 +61,7 @@ Here’s a summary of the commands you can use after setting up your project:
    npm run build
    ```
 
-   Builds the project for production. Webpack compiles the project and outputs the optimized bundle in the `/dist` directory.
+   Builds the project for production. Vite compiles the project and outputs the optimized bundle in the `dist` directory.
 
 3. **Run Tests**:
 
